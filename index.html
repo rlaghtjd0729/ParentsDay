@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>어버이날 축하 메시지</title>
+  <style>
+    body {
+      text-align: center;
+      background: #fffbe7;
+      font-family: 'Nanum Gothic', sans-serif;
+      padding-top: 80px;
+    }
+    h1 {
+      color: #e67e22;
+      font-size: 2.5em;
+    }
+    .gift-btn {
+      margin-top: 40px;
+      padding: 20px 40px;
+      background: #ff7675;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.3em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+      position: relative;
+    }
+    .gift-btn::before {
+      content: "🎁";
+      font-size: 1.5em;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .gift-img {
+      margin-top: 40px;
+      display: none;
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      animation: fadeIn 1s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <h1>어버이날 축하드려요!<br>항상 건강하고 행복하세요 💐</h1>
+  <button class="gift-btn" onclick="showGift()">선물 열기</button>
+  <br>
+  <img class="gift-img" id="giftImg" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="선물 이미지">
+  <script>
+    function showGift() {
+      document.getElementById('giftImg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
