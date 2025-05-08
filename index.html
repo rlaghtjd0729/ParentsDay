@@ -33,6 +33,36 @@
       margin-right: 10px;
       vertical-align: middle;
     }
+    /* 모달 스타일 */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-bg.active {
+      display: flex;
+    }
+    .modal-img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.8s;
+      background: #fff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .modal-bg:active,
+    .modal-img:active {
+      cursor: pointer;
+    }
   </style>
 </head>
 <meta property="og:image" content="data:," />
@@ -41,26 +71,18 @@
 <body>
   <h1>어버이날 축하드려요!<br>항상 건강하고 행복하세요 💐</h1>
   <button class="gift-btn" onclick="showGift()">선물 열기</button>
+  
+  <!-- 모달 구조 -->
+  <div class="modal-bg" id="modalBg" onclick="hideGift()">
+    <img class="modal-img" id="modalImg" src="https://media.istockphoto.com/id/1317323736/ko/%EC%82%AC%EC%A7%84/%EB%82%98%EB%AC%B4-%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C-%ED%95%98%EB%8A%98%EB%A1%9C-%EB%B0%94%EB%9D%BC%EB%B3%B4%EB%8A%94-%EA%B2%BD%EC%B9%98.jpg?s=612x612&w=0&k=20&c=0xTghmMTXJ5ITCZ-LKTABbaPIK_1kWNf0FSFl_GL_7I=" alt="선물 이미지">
+  </div>
+  
   <script>
     function showGift() {
-      var imgUrl = "https://media.istockphoto.com/id/1317323736/ko/%EC%82%AC%EC%A7%84/%EB%82%98%EB%AC%B4-%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C-%ED%95%98%EB%8A%98%EB%A1%9C-%EB%B0%94%EB%9D%BC%EB%B3%B4%EB%8A%94-%EA%B2%BD%EC%B9%98.jpg?s=612x612&w=0&k=20&c=0xTghmMTXJ5ITCZ-LKTABbaPIK_1kWNf0FSFl_GL_7I=";
-      // 새 창을 열고 이미지만 크게 출력
-      var win = window.open("", "_blank", "width=800,height=600");
-      win.document.write(`
-        <html>
-          <head>
-            <title>선물 이미지</title>
-            <style>
-              body { margin:0; background:#222; display:flex; align-items:center; justify-content:center; height:100vh; }
-              img { max-width:90vw; max-height:90vh; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.3);}
-            </style>
-          </head>
-          <body>
-            <img src="` + imgUrl + `" alt="선물 이미지" onclick="window.close()" title="클릭하면 창이 닫혀요">
-          </body>
-        </html>
-      `);
-      win.document.close();
+      document.getElementById('modalBg').classList.add('active');
+    }
+    function hideGift() {
+      document.getElementById('modalBg').classList.remove('active');
     }
   </script>
 </body>
